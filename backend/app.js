@@ -16,10 +16,6 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.get('/', (req, res) => {
-  res.send(user);
-});
-
 app.use('/admin',adminRoutes);
 app.use('/movies',movieRoutes);
 
