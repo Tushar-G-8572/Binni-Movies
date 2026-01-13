@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://binni-movies.netlify.app"
+    "https://binni-movies.vercel.app"
   ],
   credentials: true
 }));
