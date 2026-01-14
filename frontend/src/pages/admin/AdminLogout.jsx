@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AdminLogout = () => {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ const AdminLogout = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        // "http://localhost:4000/admin/logout",
+        
         `${import.meta.env.VITE_API_URL}/admin/logout`,
         {},
         {
@@ -17,11 +18,11 @@ const AdminLogout = () => {
         }
       );
     } catch (error) {
-      console.log("Logout API error (safe to ignore)");
+      toast.error("Something went wrong ❌");
     } finally {
-      // ✅ Real logout happens here
       localStorage.removeItem("adminToken");
       navigate("/");
+      toast.success("Logged Out");
     }
   };
 

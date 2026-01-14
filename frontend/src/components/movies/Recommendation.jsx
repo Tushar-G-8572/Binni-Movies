@@ -17,19 +17,17 @@ const RecommendationSection = () => {
 
   const MOVIES_PER_PAGE = 10;
 
-  // 🔥 backend fetch for search & sort
   useEffect(() => {
     fetchMovies({
       sortBy,
       order,
       title,
     });
-    setCurrentPage(1); // reset page when filter changes
+    setCurrentPage(1); 
   }, [sortBy, order, title]);
 
   if (loading) return <Loader />;
 
-  // 🔹 FRONTEND PAGINATION LOGIC
   const totalPages = Math.ceil(allMovies.length / MOVIES_PER_PAGE);
   const startIndex = (currentPage - 1) * MOVIES_PER_PAGE;
   const currentMovies = allMovies.slice(
@@ -44,10 +42,8 @@ const RecommendationSection = () => {
         Recommendations
       </h2>
 
-      {/* 🔍 SEARCH */}
       <SearchBar  />
 
-      {/* 🔃 SORT */}
       <SortBar
         onSort={(field, direction) => {
           setSortBy(field);
@@ -55,10 +51,8 @@ const RecommendationSection = () => {
         }}
       />
 
-      {/* 🎬 MOVIES (ONLY 10 SHOWN) */}
       <MovieGrid movies={currentMovies} />
 
-      {/* 📄 PAGINATION */}
       {totalPages > 1 && (
         <Pagination
           currentPage={currentPage}

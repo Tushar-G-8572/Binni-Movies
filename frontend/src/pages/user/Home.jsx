@@ -4,7 +4,7 @@ import RecommendationSection from "../../components/movies/Recommendation";
 
 const Home = () => {
   return (
-    <div className="bg-black min-h-screen p-2">
+    <div  className="bg-black min-h-screen p-2">
       <Navbar />
       <Hero />
       <RecommendationSection />

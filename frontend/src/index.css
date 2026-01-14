@@ -1,5 +1,28 @@
 @import "tailwindcss";
+html, body {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
 html {
-  scroll-behavior: smooth !important ;
-  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.Toastify__toast {
+  background: #1f1f1f;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.Toastify__progress-bar {
+  background: linear-gradient(90deg, #ff4d4d, #ff884d);
+}
+
+.Toastify__toast-container {
+  z-index: 999999;
 }

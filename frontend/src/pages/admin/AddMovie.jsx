@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddMovie = () => {
   const [movie, setMovie] = useState({
@@ -20,7 +21,7 @@ const AddMovie = () => {
 
     try {
       await axios.post(
-        // "http://localhost:4000/admin/add-movie",
+
         `${import.meta.env.VITE_API_URL}/admin/add-movie`,
         movie,
         {
@@ -30,7 +31,7 @@ const AddMovie = () => {
         }
       );
 
-      alert("Movie added successfully");
+      toast.success("Movie added successfully 🎉");
       setMovie({
         title: "",
         description: "",
@@ -39,8 +40,7 @@ const AddMovie = () => {
         poster: ""
       });
     } catch (error) {
-      console.log(error.message);
-      alert("Error adding movie");
+      toast.error("Something went wrong ❌");
     }
   };
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const EditMovie = () => {
-  // const { id } = useParams();
   const navigate = useNavigate();
 
   const [movie, setMovie] = useState({
@@ -16,7 +16,6 @@ const EditMovie = () => {
 
   const [loading, setLoading] = useState(false);
 
-  // ✅ Fetch existing movie
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -36,6 +35,7 @@ const EditMovie = () => {
           poster: data.poster || ""
         });
       } catch (error) {
+        toast.error("Something went wrong ❌");
         console.log(error.message)
       }
     };
@@ -65,7 +65,7 @@ const EditMovie = () => {
       setLoading(true);
 
       await axios.put(
-        // "http://localhost:4000/admin/update-movie",
+
         `${import.meta.env.VITE_API_URL}/admin/update-movie`,
         { ...payload},
         {
@@ -75,11 +75,12 @@ const EditMovie = () => {
         }
       );
 
-      alert("✅ Movie updated successfully");
+      toast.success("Movie Updated successfully 🎉");
       navigate("/admin/dashboard");
     } catch (error) {
       console.error(error.message)
-      alert(error.response?.data?.message || "Error updating movie");
+      toast.error("Something went wrong ❌");
+
     } finally {
       setLoading(false);
     }
@@ -126,6 +127,7 @@ const EditMovie = () => {
         />
 
         <input
+          required
           name="poster"
           placeholder="Poster URL"
           value={movie.poster}

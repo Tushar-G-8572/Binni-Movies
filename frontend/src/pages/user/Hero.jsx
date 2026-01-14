@@ -27,20 +27,16 @@ const Hero = () => {
   return (
     <div className="relative h-[70vh] md:h-[80vh] w-full rounded-xl overflow-hidden bg-black">
 
-      {/* MOBILE BACKGROUND IMAGE */}
       <img
         src={movie.poster}
         alt={movie.title}
         className="absolute inset-0 w-full h-full object-cover md:hidden"
       />
 
-      {/* MOBILE OVERLAY */}
       <div className="absolute inset-0 bg-gradient-to-top from-black via-black/70 to-transparent md:hidden" />
 
-      {/* DESKTOP LAYOUT (UNCHANGED) */}
       <div className="hidden md:flex h-full w-full items-center justify-between px-12 bg-gradient-to-right from-black via-black to-gray-900">
 
-        {/* LEFT */}
         <div className="max-w-xl flex flex-col gap-4">
           <h1 className="text-4xl font-bold text-red-600">
             {movie.title}
@@ -59,7 +55,6 @@ const Hero = () => {
           </button>
         </div>
 
-        {/* RIGHT */}
         <div className="h-full flex items-center">
           <img
             src={movie.poster}
@@ -69,7 +64,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* MOBILE BOTTOM CONTENT */}
       <div className="absolute bottom-0 w-full p-5 md:hidden z-10">
         <div className="flex flex-col gap-3">
           <h1 className="text-2xl font-bold text-red-600">
@@ -90,7 +84,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* DOTS (BOTH VIEWS) */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {heroMovies.map((_, index) => (
           <span

@@ -5,14 +5,12 @@ const MovieCard = ({ data }) => {
   return (
     <div className="relative h-80 rounded-xl overflow-hidden cursor-pointer group">
 
-      {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center transition 
                    group-hover:blur-sm group-hover:brightness-50"
         style={{ backgroundImage: `url(${data.poster})` }}
       />
 
-      {/* Title + Rating */}
       <div className="absolute bottom-2 w-full text-center z-10">
         <h4 className="text-xl font-bold text-white">{data.title}</h4>
         <span className="text-red-500 font-semibold">
@@ -20,7 +18,6 @@ const MovieCard = ({ data }) => {
         </span>
       </div>
 
-      {/* Hover overlay */}
       <div className="absolute inset-0 z-20 p-4 flex flex-col 
                       justify-end opacity-0 group-hover:opacity-100 
                       transition">

@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AdminAuthContext } from "../../context/AdminAuthProvider";
+import { toast } from "react-toastify";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const AdminLogin = () => {
 
     try {
       const res = await axios.post(
-        // "http://localhost:4000/admin/login",
+       
         `${import.meta.env.VITE_API_URL}/admin/login`,
         { email, password }
       );
@@ -25,11 +26,13 @@ const AdminLogin = () => {
       setShowPassword(false);
       login(res.data.token);
       navigate("/admin/dashboard");
+      toast.success("Admin Logged IN successfully 🎉");
     } catch (err) {
       setEmail("");
       setPassword("");
       setShowPassword(false);
-      alert(err.response?.data?.message || "Login failed");
+      toast.error("Something went wrong ❌");
+
     }
   };
 

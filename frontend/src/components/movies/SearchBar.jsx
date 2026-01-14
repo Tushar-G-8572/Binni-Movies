@@ -6,7 +6,7 @@ const SearchBar = () => {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    if (query === "") return; // ⛔ avoid initial run
+    if (query === "") return; 
 
     const timer = setTimeout(() => {
       fetchMovies({ title: query });

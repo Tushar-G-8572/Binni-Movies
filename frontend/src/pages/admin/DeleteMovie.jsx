@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const DeleteMovie = () => {
   const [title, setTitle] = useState("");
@@ -8,7 +9,8 @@ const DeleteMovie = () => {
 
   const handleDelete = async () => {
     if (!title.trim()) {
-      alert("Please enter movie title");
+      toast.warning("Please Enter Movie Title first ⚠️");
+
       return;
     }
 
@@ -19,7 +21,7 @@ const DeleteMovie = () => {
 
     try {
       await axios.delete(
-        // "http://localhost:4000/admin/delete-movie",
+  
         `${import.meta.env.VITE_API_URL}/admin/delete-movie`,
         {
           headers: {
@@ -29,12 +31,13 @@ const DeleteMovie = () => {
         }
       );
 
-      alert("Movie deleted successfully");
+      toast.success("Movie Deleted...");
       setTitle("");
       navigate("/admin/dashboard");
 
     } catch (error) {
-      alert(error.response?.data?.message || "Error deleting movie");
+      toast.error("Error Deleting Movie  ❌");
+
     }
   };
 
